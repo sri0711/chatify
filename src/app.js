@@ -8,6 +8,8 @@ const Io = new IoServer(Server);
 
 App.use(Express.json());
 
+App.get("/", (req, res) => res.send({ status: true }));
+
 Io.on("connection", (socket) => {
   socket.on("news", (data) => {
     if (data.type === "register") {
