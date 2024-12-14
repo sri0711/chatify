@@ -8,4 +8,7 @@ Router.get("/search", async (req, res) => {
   return res.status(200).send({ status: true, data });
 });
 
+Router.get("/audio/:audioId", async (req, res) => {
+});
+
 module.exports = Router;
