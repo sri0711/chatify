@@ -2,11 +2,13 @@ const Express = require("express");
 const App = Express();
 const { createServer: CreateServer } = require("node:http");
 const { Server: IoServer } = require("socket.io");
+const morgan = require("morgan");
 
 const Server = CreateServer(App);
 const Io = new IoServer(Server);
 
 App.use(Express.json());
+App.use(morgan("dev"));
 
 App.get("/", (req, res) => res.send({ status: true }));
 App.use("/youtube", require("./Router/youtube"));
