@@ -29,6 +29,10 @@ Io.on("connection", (socket) => {
       console.log("new join", data.room_id);
       socket.join(data.room_id);
     }
+
+    if (data.type === "leave") {
+      socket.leave(data.room_id);
+    }
     if (data.type === "message") {
       data.client_id = socket.client.id;
       data.unique_id = data.room_id + "_" + require("node:crypto").randomUUID();
