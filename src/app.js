@@ -31,6 +31,7 @@ Io.on("connection", (socket) => {
     }
     if (data.type === "message") {
       data.client_id = socket.client.id;
+      data.unique_id = data.room_id + "_" + require("node:crypto").randomUUID();
       Io.to(data.room_id).emit("message", data);
     }
   });
